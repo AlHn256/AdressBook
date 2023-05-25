@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YZi87BKRC0x+iTieb21q8BhyfW1tW+u0EG0RfuxJ6pdtQDGlhYCfdxvYmbaX/my91WPsnuCDmamk3i5yTdt1NQ==",
+  "dgSpecHash": "6LnrLHh17c9KLu/bPfABA+z7ljKi9uGFyhM9LJ+W+xZdyBetqI9VfSN7JU9Maj5Z15DsGjn2jVDrf8f+NnB+uw==",
   "success": true,
-  "projectFilePath": "C:\\C#\\WindowsAutorization WebAppMVC\\WebAppMVC3.csproj",
+  "projectFilePath": "D:\\CSH\\AdressBook\\AdressBook\\WebAppMVC3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.negotiate\\7.0.5\\microsoft.aspnetcore.authentication.negotiate.7.0.5.nupkg.sha512",

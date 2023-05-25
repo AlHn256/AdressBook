@@ -52,3 +52,4 @@ Mkfile.old
 dkms.conf
 bin/Debug/
 obj/Debug/
+.vs/WebAppMVC3/

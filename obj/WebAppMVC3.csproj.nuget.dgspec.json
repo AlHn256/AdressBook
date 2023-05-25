@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\C#\\WindowsAutorization WebAppMVC\\WebAppMVC3.csproj": {}
+    "D:\\CSH\\AdressBook\\AdressBook\\WebAppMVC3.csproj": {}
   },
   "projects": {
-    "C:\\C#\\WindowsAutorization WebAppMVC\\WebAppMVC3.csproj": {
+    "D:\\CSH\\AdressBook\\AdressBook\\WebAppMVC3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\C#\\WindowsAutorization WebAppMVC\\WebAppMVC3.csproj",
+        "projectUniqueName": "D:\\CSH\\AdressBook\\AdressBook\\WebAppMVC3.csproj",
         "projectName": "WebAppMVC3",
-        "projectPath": "C:\\C#\\WindowsAutorization WebAppMVC\\WebAppMVC3.csproj",
+        "projectPath": "D:\\CSH\\AdressBook\\AdressBook\\WebAppMVC3.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\C#\\WindowsAutorization WebAppMVC\\obj\\",
+        "outputPath": "D:\\CSH\\AdressBook\\AdressBook\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

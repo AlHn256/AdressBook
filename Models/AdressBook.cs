@@ -9,8 +9,8 @@ namespace WebAppMVC3.Models
         [EmailAddress(ErrorMessage ="Некорректный адрес")]
         public string Email { get; set; }
         public string FIO { get; set; }
-        //public DateTime Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
-        public DateOnly Birthday { get; set; }
+        //public DateOnly Birthday { get; set; }
     }
 }

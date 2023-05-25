@@ -13,22 +13,24 @@ namespace WebAppMVC3.Controllers
                 Id = 0,
                 FIO = "FIO123",
                 Email="faasd@yewer.ru",
-                Birthday= DateOnly.FromDateTime(DateTime.Now)
+                Birthday=DateTime.Now,
+                //Birthday= DateOnly.FromDateTime(DateTime.Now)
                 },
                 new AdressBook()
                 {
                 Id = 1,
                 FIO = "dasdasd3",
                 Email="faasd@yewer.ru",
-                Birthday= DateOnly.FromDateTime(DateTime.Now)
+                Birthday=DateTime.Now,
+                //Birthday= DateOnly.FromDateTime(DateTime.Now)
                 },
                 new AdressBook()
                 {
                 Id = 2,
                 FIO = "FIO42312323",
                 Email="fasdasdasd@yewer.ru",
-                //Birthday=DateTime.Now,
-                Birthday= DateOnly.FromDateTime(DateTime.Now),
+                Birthday=DateTime.Now,
+                //Birthday= DateOnly.FromDateTime(DateTime.Now),
                 }
             };
         public ActionResult Index()
@@ -53,6 +55,11 @@ namespace WebAppMVC3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
+            var valuesList = new List<string>();
+
+            valuesList.Add(collection["id"]);
+            valuesList.Add(collection["field2"]);
+
             try
             {
                 return RedirectToAction(nameof(Index));
