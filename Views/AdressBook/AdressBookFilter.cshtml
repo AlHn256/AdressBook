@@ -1,0 +1,104 @@
+﻿@model WebAppMVC3.Models.AdressBookFilter
+
+@{
+    ViewData["Title"] = "AdressBookFilter";
+}
+
+<h1>Adress List</h1>
+
+<hr />
+<h4>Filter</h4>
+<form asp-action="AdressBookFilter">
+    <table class="table">
+        <thead>
+            <tr>       
+                <th>
+                <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" style="width: 100px;" />
+                </div>
+                </th>
+
+                <th>
+                <div class="form-group">
+                <label asp-for="FIO" class="control-label"></label>
+                <input asp-for="FIO" class="form-control" style="width: 150px;" />
+                </div>
+                </th>
+   
+                <th>
+                <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" style="width: 200px;" />
+                </div>
+                </th>
+
+                <th>
+                <div class="form-group">
+                <label>Birthday From</label>
+                <input asp-for="BirthdayFrom" class="form-control" style="width: 200px;" />
+                </div>
+                </th>
+
+                <th>
+                <div class="form-group">
+                <label asp-for="BirthdayTo" class="control-label"></label>
+                <input asp-for="BirthdayTo" class="form-control" style="width: 200px;" />
+                </div>
+                </th>
+
+                <th>
+                <div class="form-group">
+                    <input type="submit" value="Apply Filter" class="btn btn-primary" />
+                </div>
+            </tr>
+        </thead>
+    </table>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FIO)
+            </th>
+            <th>
+                Birthday
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @if (Model.AdressBooksList == null || Model.AdressBooksList.Count == 0)
+    {
+        <tbody>
+        </tbody>
+    }
+    else
+    {
+    <tbody>
+    @foreach (var item in Model.AdressBooksList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FIO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+        </tr>
+    }
+    </tbody>
+    }
+</table>

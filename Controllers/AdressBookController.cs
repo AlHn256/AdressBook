@@ -1,64 +1,63 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
+using WebAppMVC3.Data;
 using WebAppMVC3.Models;
 
 namespace WebAppMVC3.Controllers
 {
     public class AdressBookController : Controller
     {
-        List<AdressBook> books = new List<AdressBook>()
-            {
-                new AdressBook()
-                {
-                Id = 0,
-                FIO = "FIO123",
-                Email="faasd@yewer.ru",
-                Birthday=DateTime.Now,
-                //Birthday= DateOnly.FromDateTime(DateTime.Now)
-                },
-                new AdressBook()
-                {
-                Id = 1,
-                FIO = "dasdasd3",
-                Email="faasd@yewer.ru",
-                Birthday=DateTime.Now,
-                //Birthday= DateOnly.FromDateTime(DateTime.Now)
-                },
-                new AdressBook()
-                {
-                Id = 2,
-                FIO = "FIO42312323",
-                Email="fasdasdasd@yewer.ru",
-                Birthday=DateTime.Now,
-                //Birthday= DateOnly.FromDateTime(DateTime.Now),
-                }
-            };
+        private readonly AdressRepository Repository;
+
+        public AdressBookController(AdressRepository repository)
+        {
+            Repository = repository;    
+        }
+
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
+            var books = Repository.GetAdressBooks().ToList();
             return View(books);
         }
 
-        public ActionResult AdressList()
-        {
+        //public ActionResult AdressList()
+        //{
+        //    var books = Repository.GetAdressBooks().ToList();
+        //    return View(books);
+        //}
 
-            return View(books);
+        public ActionResult AdressBookFilter(AdressBookFilter filter)
+        {
+            AdressBookFilter  adressBookFilter = new AdressBookFilter();
+
+            var AdressBooksList = Repository.GetAdressBooks();
+
+            if (filter.Id != null) AdressBooksList = AdressBooksList.Where(x => x.Id == filter.Id);
+            if (filter.FIO != null) AdressBooksList = AdressBooksList.Where(x => x.FIO == filter.FIO);
+            if (filter.Email != null) AdressBooksList = AdressBooksList.Where(x => x.Email == filter.Email);
+            if (filter.BirthdayFrom != null) AdressBooksList = AdressBooksList.Where(x => x.Birthday > filter.BirthdayFrom);
+            if (filter.BirthdayTo != null) AdressBooksList = AdressBooksList.Where(x => x.Birthday < filter.BirthdayTo);
+
+            adressBookFilter.AdressBooksList = AdressBooksList.ToList();
+            return View(adressBookFilter);
         }
 
         // GET: AdressBookController/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: AdressBookController/Create
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(AdressBook adress)
         {
-            var valuesList = new List<string>();
-
-            valuesList.Add(collection["id"]);
-            valuesList.Add(collection["field2"]);
+            Repository.SaveAdress(adress);
 
             try
             {
@@ -71,17 +70,21 @@ namespace WebAppMVC3.Controllers
         }
 
         // GET: AdressBookController/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
-            var adress = books.Where(x => x.Id == id).FirstOrDefault();
+            var adress = Repository.GetAdressBook(id);
             return View(adress);
         }
 
         // POST: AdressBookController/Edit/5
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, AdressBook adress)
         {
+            Repository.SaveAdress(adress);
+
             try
             {
                 return RedirectToAction(nameof(Index));
@@ -93,16 +96,21 @@ namespace WebAppMVC3.Controllers
         }
 
         // GET: AdressBookController/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var adress = Repository.GetAdressBook(id);
+            return View(adress);
         }
 
         // POST: AdressBookController/Delete/5
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
+            AdressBook adress = Repository.GetAdressBook(id);
+            Repository.DeleteAdressBook(adress);
             try
             {
                 return RedirectToAction(nameof(Index));
