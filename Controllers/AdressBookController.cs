@@ -22,12 +22,6 @@ namespace WebAppMVC3.Controllers
             return View(books);
         }
 
-        //public ActionResult AdressList()
-        //{
-        //    var books = Repository.GetAdressBooks().ToList();
-        //    return View(books);
-        //}
-
         public ActionResult AdressBookFilter(AdressBookFilter filter)
         {
             AdressBookFilter  adressBookFilter = new AdressBookFilter();
