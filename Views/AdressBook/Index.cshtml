@@ -24,28 +24,41 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FIO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new {  id = item.Id , item })
-            </td>
-        </tr>
-}
-    </tbody>
+    
+        @if (Model == null || Model.Count() == 0)
+        {
+        <tbody>
+        </tbody>
+        }
+        else
+        {
+        <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FIO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Birthday)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new {  id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new {  id = item.Id , item })
+                        </td>
+                    </tr>
+                }
+        </tbody>
+        }
+
+
+ 
 </table>
 
 <p>

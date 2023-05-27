@@ -15,13 +15,6 @@ namespace WebAppMVC3.Controllers
             Repository = repository;    
         }
 
-        [Authorize(Roles = "admin")]
-        public ActionResult Index()
-        {
-            var books = Repository.GetAdressBooks().ToList();
-            return View(books);
-        }
-
         public ActionResult AdressBookFilter(AdressBookFilter filter)
         {
             AdressBookFilter  adressBookFilter = new AdressBookFilter();
@@ -36,6 +29,13 @@ namespace WebAppMVC3.Controllers
 
             adressBookFilter.AdressBooksList = AdressBooksList.ToList();
             return View(adressBookFilter);
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult Index()
+        {
+            var books = Repository.GetAdressBooks().ToList();
+            return View(books);
         }
 
         // GET: AdressBookController/Create
